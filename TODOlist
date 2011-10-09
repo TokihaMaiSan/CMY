@@ -1,0 +1,42 @@
+/*
+TODO: Create colorcodes for Windows-Prompt
+TODO: Create Leveldesigner
+TODO: Provide function to reassign keys and save the changes
+TODO: Provide Playerprofiles so that individual players can save their progress independently
+
+Mines v. 0.6 (in Progress)
+	- TODO: Clean up the code
+	- TODO: Create a class gameboard to handle the general tasks of a game board (like set or print). This will of course break the internal interfaces once again...
+	- TODO: Change code and add macros in a way that the programm can be compiled as a Windows Binary
+	- TODO: Give user the possibility the change assigned keys ingame
+
+Mines v. 0.5 (5th February 2010)
+	- Rewritten the Menu-function. It's now interactive but you can still access the menu entries by typing the corresponding digit. (at least that works for the entries 1 to 9 and 0)
+	- Individual classes are now compiled and linked instead of included at compile time
+
+Mines v. 0.4 (30th April 2009)
+	- Created a switch to make the colorcodes optional at compile time (edit objects.h and comment the ENABLE_COLOR Macro)
+	- Created a save and load function so that the game progress (wins, losses and board size) can be saved
+	- Created statistics to show game progress
+	- Made sure the first field of choice is never a mine
+	- Reset the cursor at start of a new game
+	- Reassigned key to uncover field to enter-key
+	- Each value has now a different color
+	- Changed return value of GameCore to int with standard 0
+	- Changed condition to win from "mark all bombs right" to "uncover all tiles that are no bombs". This condition is now checked by a separate function. NOTE: Guess I should have done this right from the beginning.
+	- Changed the never used has_game_ended()-function into CheckGameState() which only analyses the current state of the game and decides if the game continues or is won. A fail is discovered by the UnCover()-function.
+	- NOTE: There again have been slight changes to the interface. But this time it does not break any compatibility as these were only done to private functions
+
+Mines v. 0.3 (05th April 2009)
+	- Rearranged interface so that Init() can be called optionally to initialise the board with non-standard values. GameCore() is now the only function that is mandatory. Create() is called by GameCore().
+	- Important field-states are now colored. NOTE: This makes the game Linux/Unix dependent. There will be a switch to turn this off in the source code in the next version. This was tested with bash, sh, csh, zsh.
+	- Created a main loop with menus. One can now resize the board ingame and reset it to default in the options.
+	- Implemented a cursor. Cursor can be moved with arrow-keys. B marks/unmarks a field as a bomb, SPACE uncovers it (if it isn't  marked) and Q ends the game and returns back to the main menu.
+	- NOTE: There have been slight changes in the interface.
+
+Mines v. 0.2 (19th March 2009)
+	- Redesigned board so that it consists of tile-objects rather than a bunch of arrays that are managed directly
+
+Mines v. 0.1 (1st April 2008)
+	- Basic game writen.
+*/

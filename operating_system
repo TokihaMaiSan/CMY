@@ -1,0 +1,12 @@
+#ifndef OPERATING_SYSTEM
+#define OPERATING_SYSTEM
+
+/**
+	Just remove the comments ('//') of the operating system you want to compile the programm for.
+	Don't forget to add comments to the other.
+*/
+
+#define __UNIX__
+// #define __WINDOWS__
+
+#endif //OPERATING_SYSTEM

@@ -1,0 +1,43 @@
+SRC = main.cpp Mines.h Mines.cpp tile.h tile.cpp ohri.h debug.h error.h define.h objects.h colorcodes.h DEBUGDEF mygetch.h cursor.h cursor.cpp limits.h
+TARGET = MINES
+OBJECTS = main.o Mines.o tile.o cursor.o
+CC = g++
+
+DEFAULT_SIZE = 3
+
+#Packaging
+TAR = tar -cvvf
+GZIP = gzip -v
+
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	$(CC) -o $(TARGET) $(OBJECTS)
+
+$(OBJECTS): $(SRC)
+	$(CC) -c main.cpp
+	$(CC) -c Mines.cpp
+	$(CC) -c tile.cpp
+	$(CC) -c cursor.cpp
+
+run: ./$(TARGET)
+	./$(TARGET) $(DEFAULT_SIZE)
+
+arch: ./$(TARGET)
+	$(TAR) $(TARGET)_BIN.tar $(TARGET)
+	$(GZIP) $(TARGET)_BIN.tar
+
+src_arch:
+	$(TAR) $(TARGET)_SRC.tar $(SRC)
+	$(GZIP) $(TARGET)_SRC.tar
+
+debug:
+	echo "#define DEBUG" > DEBUGDEF
+
+no_debug:
+	echo "#define NODEBUG" > DEBUGDEF
+
+clean:
+	rm -f ./$(TARGET)
+	rm -f */$(OBJECTS)
